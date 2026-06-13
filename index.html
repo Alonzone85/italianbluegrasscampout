@@ -118,69 +118,60 @@
 
     /* ── HERO ── */
     .hero {
-      min-height: 90svh;
-      display: flex; flex-direction: column;
-      justify-content: space-between;
-      position: relative; overflow: hidden;
+      min-height: 92svh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
       background: var(--paglia);
     }
 
-    /* Logo in filigrana — centrato, grande, bassa opacità */
-    .hero-logo-bg {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -58%);
-      width: clamp(320px, 70vw, 680px);
-      height: auto;
-      opacity: 0.13;
-      pointer-events: none;
-      z-index: 0;
-      filter: saturate(0.4);
-    }
-
-    /* Testo centrato in alto */
+    /* Area testo + logo — parte superiore */
     .hero-content {
       position: relative; z-index: 2;
       text-align: center;
-      padding: clamp(2.5rem, 8vw, 5rem) var(--px) 1rem;
-      max-width: 780px; width: 100%; margin: 0 auto;
+      padding: clamp(2rem, 6vw, 4rem) var(--px) 2rem;
+      flex-shrink: 0;
     }
+
+    /* Logo visibile, grande, senza sfondo */
+    .hero-logo-img {
+      width: clamp(180px, 38vw, 320px);
+      height: auto;
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+
     .hero-eyebrow {
       font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--verde); margin-bottom: 0.9rem;
-    }
-    .hero-title {
-      font-family: var(--ff-d);
-      font-size: clamp(2.6rem, 10vw, 6rem);
-      font-weight: 900; line-height: 0.92;
-      color: var(--marrone);
-    }
-    .hero-title .accent { color: var(--arancio); }
-    .hero-title .campout {
-      display: block;
-      font-size: clamp(3.2rem, 13vw, 7.5rem);
+      text-transform: uppercase; color: var(--verde); margin-bottom: 0.75rem;
     }
     .hero-sub {
-      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
       color: var(--marrone-lt);
-      margin: 1.25rem auto 2rem;
-      max-width: 460px; line-height: 1.65;
+      margin: 0 auto 1.75rem;
+      max-width: 420px; line-height: 1.65;
     }
     .hero-actions {
       display: flex; gap: 0.75rem;
       justify-content: center; flex-wrap: wrap;
     }
 
-    /* Paesaggio SVG in fondo — si appoggia al bordo inferiore */
+    /* Paesaggio — cresce per riempire lo spazio rimanente */
     .hero-landscape {
       position: relative; z-index: 1;
-      width: 100%; flex-shrink: 0;
-      line-height: 0;
-      margin-top: auto;
+      width: 100%;
+      flex: 1;
+      min-height: 240px;
+      display: flex;
+      align-items: flex-end;
     }
     .hero-landscape svg {
-      width: 100%; height: auto;
+      width: 100%;
+      height: 100%;
       display: block;
+      position: absolute;
+      bottom: 0; left: 0;
     }
 
     /* ── BUTTONS ── */
@@ -471,16 +462,10 @@
   <!-- HERO -->
   <header class="hero">
 
-    <!-- Logo in filigrana di sfondo -->
-    <img class="hero-logo-bg" src="logo.png" alt="" aria-hidden="true">
-
-    <!-- Testo centrato -->
+    <!-- Contenuto superiore: logo + testo -->
     <div class="hero-content">
+      <img class="hero-logo-img" src="logo.png" alt="Italian Bluegrass Campout">
       <p class="hero-eyebrow">Dal 2025 · Italia</p>
-      <h1 class="hero-title">
-        Italian <span class="accent">Bluegrass</span>
-        <span class="campout">Campout</span>
-      </h1>
       <p class="hero-sub">Il raduno italiano di musica acustica. Banjo, mandolino, chitarra, violino — suonati insieme in un rifugio tra i boschi.</p>
       <div class="hero-actions">
         <a href="#campout" class="btn btn-primary">Campout 2027 — iscriviti</a>
@@ -488,95 +473,98 @@
       </div>
     </div>
 
-    <!-- Paesaggio illustrato in fondo -->
+    <!-- Paesaggio illustrato — riempie tutta la parte bassa -->
     <div class="hero-landscape">
-      <svg viewBox="0 0 1440 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
 
-        <!-- Collina principale -->
-        <ellipse cx="720" cy="340" rx="820" ry="200" fill="#3B6B1A"/>
-        <!-- Colline laterali -->
-        <ellipse cx="120" cy="320" rx="320" ry="130" fill="#2d5a14"/>
-        <ellipse cx="1320" cy="325" rx="340" ry="140" fill="#2d5a14"/>
-        <!-- Prato in primo piano -->
-        <path d="M0 240 Q360 210 720 225 Q1080 210 1440 235 L1440 280 L0 280Z" fill="#4a7a20"/>
-        <!-- Fascia erba chiara -->
-        <path d="M0 258 Q360 245 720 250 Q1080 245 1440 255 L1440 280 L0 280Z" fill="#5c8a30"/>
+        <!-- Cielo paglia (fondo trasparente, eredita dalla hero) -->
 
-        <!-- Alberi — sinistra lontano -->
-        <rect x="55" y="148" width="10" height="95" fill="#1e3d0a"/>
-        <ellipse cx="60" cy="138" rx="26" ry="34" fill="#1e3d0a"/>
+        <!-- Colline di sfondo -->
+        <ellipse cx="720" cy="420" rx="900" ry="240" fill="#3B6B1A"/>
+        <ellipse cx="100" cy="380" rx="380" ry="160" fill="#2d5a14"/>
+        <ellipse cx="1340" cy="385" rx="380" ry="165" fill="#2d5a14"/>
 
-        <rect x="108" y="138" width="9" height="100" fill="#2d5a14"/>
-        <ellipse cx="112" cy="126" rx="22" ry="30" fill="#2d5a14"/>
+        <!-- Prato primo piano -->
+        <path d="M0 270 Q360 248 720 258 Q1080 248 1440 268 L1440 320 L0 320Z" fill="#4a7a20"/>
+        <path d="M0 292 Q360 278 720 284 Q1080 278 1440 290 L1440 320 L0 320Z" fill="#5c8a30"/>
 
-        <rect x="155" y="130" width="11" height="108" fill="#2d5a14"/>
-        <ellipse cx="160" cy="118" rx="28" ry="36" fill="#3B6B1A"/>
+        <!-- Alberi sfondo lontano — più piccoli e scuri -->
+        <rect x="60" y="195" width="8" height="80" fill="#1a3508"/>
+        <ellipse cx="64" cy="184" rx="20" ry="26" fill="#1a3508"/>
 
-        <!-- Alberi sinistra primo piano -->
-        <rect x="230" y="110" width="13" height="130" fill="#1e3d0a"/>
-        <ellipse cx="236" cy="96" rx="34" ry="44" fill="#1e3d0a"/>
+        <rect x="115" y="185" width="8" height="88" fill="#1e3d0a"/>
+        <ellipse cx="119" cy="173" rx="22" ry="28" fill="#1e3d0a"/>
 
-        <rect x="295" y="120" width="12" height="120" fill="#2d5a14"/>
-        <ellipse cx="301" cy="106" rx="30" ry="40" fill="#C45B1A"/>
+        <rect x="175" y="178" width="9" height="92" fill="#1e3d0a"/>
+        <ellipse cx="179" cy="165" rx="24" ry="30" fill="#2d5a14"/>
 
-        <rect x="360" y="100" width="14" height="140" fill="#1e3d0a"/>
-        <ellipse cx="367" cy="84" rx="38" ry="50" fill="#2d5a14"/>
+        <rect x="1260" y="192" width="8" height="82" fill="#1a3508"/>
+        <ellipse cx="1264" cy="180" rx="20" ry="26" fill="#1a3508"/>
+
+        <rect x="1315" y="182" width="8" height="90" fill="#1e3d0a"/>
+        <ellipse cx="1319" cy="170" rx="22" ry="28" fill="#1e3d0a"/>
+
+        <rect x="1370" y="190" width="9" height="84" fill="#1e3d0a"/>
+        <ellipse cx="1374" cy="178" rx="20" ry="26" fill="#2d5a14"/>
+
+        <!-- Alberi primo piano sinistra -->
+        <rect x="240" y="148" width="13" height="128" fill="#1e3d0a"/>
+        <ellipse cx="246" cy="132" rx="34" ry="44" fill="#1e3d0a"/>
+
+        <rect x="308" y="136" width="13" height="138" fill="#2d5a14"/>
+        <ellipse cx="314" cy="118" rx="36" ry="48" fill="#C45B1A"/>
+
+        <rect x="382" y="122" width="14" height="150" fill="#1e3d0a"/>
+        <ellipse cx="389" cy="104" rx="40" ry="52" fill="#2d5a14"/>
+
+        <rect x="460" y="108" width="15" height="162" fill="#2d5a14"/>
+        <ellipse cx="467" cy="88" rx="44" ry="56" fill="#3B6B1A"/>
 
         <!-- Alberi centro -->
-        <rect x="490" y="85" width="15" height="155" fill="#2d5a14"/>
-        <ellipse cx="497" cy="68" rx="42" ry="54" fill="#3B6B1A"/>
+        <rect x="548" y="92" width="16" height="178" fill="#1e3d0a"/>
+        <ellipse cx="556" cy="70" rx="48" ry="62" fill="#D94F1A"/>
 
-        <rect x="570" y="75" width="16" height="165" fill="#1e3d0a"/>
-        <ellipse cx="578" cy="56" rx="46" ry="60" fill="#D94F1A"/>
+        <rect x="645" y="80" width="18" height="188" fill="#2d5a14"/>
+        <ellipse cx="654" cy="56" rx="54" ry="68" fill="#3B6B1A"/>
 
-        <rect x="660" y="68" width="18" height="172" fill="#2d5a14"/>
-        <ellipse cx="669" cy="48" rx="50" ry="64" fill="#3B6B1A"/>
+        <rect x="748" y="84" width="17" height="184" fill="#1e3d0a"/>
+        <ellipse cx="756" cy="62" rx="52" ry="66" fill="#8B3A1A"/>
 
-        <rect x="755" y="72" width="16" height="168" fill="#1e3d0a"/>
-        <ellipse cx="763" cy="52" rx="46" ry="60" fill="#8B3A1A"/>
+        <rect x="848" y="90" width="16" height="178" fill="#2d5a14"/>
+        <ellipse cx="856" cy="68" rx="50" ry="64" fill="#C45B1A"/>
 
-        <rect x="845" y="78" width="15" height="162" fill="#2d5a14"/>
-        <ellipse cx="852" cy="60" rx="44" ry="56" fill="#C45B1A"/>
+        <!-- Alberi primo piano destra -->
+        <rect x="945" y="106" width="15" height="162" fill="#1e3d0a"/>
+        <ellipse cx="952" cy="86" rx="44" ry="56" fill="#2d5a14"/>
 
-        <!-- Alberi destra primo piano -->
-        <rect x="940" y="92" width="14" height="148" fill="#1e3d0a"/>
-        <ellipse cx="947" cy="76" rx="40" ry="52" fill="#2d5a14"/>
+        <rect x="1022" y="120" width="14" height="150" fill="#2d5a14"/>
+        <ellipse cx="1029" cy="102" rx="40" ry="52" fill="#D94F1A"/>
 
-        <rect x="1015" y="108" width="13" height="132" fill="#2d5a14"/>
-        <ellipse cx="1021" cy="94" rx="34" ry="44" fill="#D94F1A"/>
+        <rect x="1096" y="134" width="13" height="140" fill="#1e3d0a"/>
+        <ellipse cx="1102" cy="116" rx="36" ry="48" fill="#3B6B1A"/>
 
-        <rect x="1085" y="118" width="12" height="122" fill="#1e3d0a"/>
-        <ellipse cx="1091" cy="104" rx="32" ry="42" fill="#3B6B1A"/>
-
-        <!-- Alberi destra lontano -->
-        <rect x="1175" y="132" width="11" height="108" fill="#2d5a14"/>
-        <ellipse cx="1180" cy="120" rx="28" ry="36" fill="#2d5a14"/>
-
-        <rect x="1245" y="140" width="10" height="100" fill="#1e3d0a"/>
-        <ellipse cx="1250" cy="128" rx="24" ry="32" fill="#8B3A1A"/>
-
-        <rect x="1310" y="148" width="9" height="92" fill="#2d5a14"/>
-        <ellipse cx="1314" cy="138" rx="22" ry="28" fill="#1e3d0a"/>
-
-        <!-- Arbusti primo piano -->
-        <ellipse cx="180" cy="252" rx="28" ry="16" fill="#3d6b18"/>
-        <ellipse cx="420" cy="258" rx="22" ry="12" fill="#2d5a14"/>
-        <ellipse cx="680" cy="255" rx="30" ry="14" fill="#3d6b18"/>
-        <ellipse cx="900" cy="260" rx="24" ry="13" fill="#2d5a14"/>
-        <ellipse cx="1150" cy="256" rx="26" ry="14" fill="#3d6b18"/>
-        <ellipse cx="1350" cy="260" rx="20" ry="12" fill="#2d5a14"/>
+        <rect x="1168" y="146" width="13" height="130" fill="#2d5a14"/>
+        <ellipse cx="1174" cy="130" rx="34" ry="44" fill="#1e3d0a"/>
 
         <!-- Sentiero nella collina -->
-        <path d="M680 240 Q700 220 720 215 Q740 220 760 240" stroke="#EAE3BC" stroke-width="4" fill="none" opacity="0.5" stroke-linecap="round"/>
+        <path d="M690 268 Q710 250 720 246 Q730 250 750 268" stroke="#EAE3BC" stroke-width="5" fill="none" opacity="0.45" stroke-linecap="round"/>
 
-        <!-- Dettagli erba -->
-        <line x1="310" y1="268" x2="310" y2="258" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
-        <line x1="315" y1="265" x2="318" y2="255" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
-        <line x1="550" y1="270" x2="550" y2="260" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
-        <line x1="555" y1="267" x2="558" y2="257" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
-        <line x1="830" y1="268" x2="830" y2="258" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
-        <line x1="1060" y1="270" x2="1060" y2="260" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
-        <line x1="1280" y1="268" x2="1280" y2="258" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <!-- Arbusti primo piano -->
+        <ellipse cx="190" cy="282" rx="30" ry="15" fill="#3d6b18"/>
+        <ellipse cx="445" cy="286" rx="24" ry="13" fill="#2d5a14"/>
+        <ellipse cx="700" cy="284" rx="32" ry="15" fill="#3d6b18"/>
+        <ellipse cx="920" cy="287" rx="26" ry="13" fill="#2d5a14"/>
+        <ellipse cx="1180" cy="284" rx="28" ry="14" fill="#3d6b18"/>
+        <ellipse cx="1400" cy="288" rx="22" ry="12" fill="#2d5a14"/>
+
+        <!-- Fili d'erba -->
+        <line x1="330" y1="298" x2="330" y2="286" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <line x1="336" y1="295" x2="340" y2="283" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <line x1="580" y1="300" x2="580" y2="288" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <line x1="586" y1="297" x2="590" y2="285" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <line x1="860" y1="299" x2="860" y2="287" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <line x1="866" y1="296" x2="870" y2="284" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
+        <line x1="1100" y1="300" x2="1100" y2="288" stroke="#4a7a20" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </div>
 
