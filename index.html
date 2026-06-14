@@ -311,6 +311,61 @@
     }
     .edition-link::after { content: '→'; }
 
+    /* ── GALLERIA EDIZIONI ── */
+    .edition-gallery {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 6px; margin-top: 0.85rem;
+    }
+    .edition-gallery img {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      border-radius: 4px; cursor: pointer; display: block;
+      border: 1px solid var(--border);
+      transition: transform 0.15s, filter 0.15s;
+    }
+    .edition-gallery img:hover { transform: scale(1.04); filter: brightness(1.05); }
+    .edition-gallery .gallery-empty {
+      grid-column: 1 / -1;
+      font-size: 0.8rem; font-style: italic; color: var(--marrone-lt);
+      padding: 0.4rem 0;
+    }
+    .edition-album {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--verde);
+      margin-top: 0.7rem; min-height: 36px;
+    }
+    .edition-album::after { content: '→'; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(30, 16, 8, 0.93);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+      padding: 1.5rem;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img {
+      max-width: 92vw; max-height: 84vh;
+      border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .lightbox button {
+      position: absolute; background: rgba(245,240,216,0.12);
+      color: var(--paglia); border: none; cursor: pointer;
+      width: 48px; height: 48px; border-radius: 50%;
+      font-size: 1.5rem; line-height: 1; display: flex;
+      align-items: center; justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.15s;
+    }
+    .lightbox button:hover { background: rgba(245,240,216,0.25); }
+    .lb-close { top: 1rem; right: 1rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+    @media (max-width: 600px) {
+      .lb-prev { left: 0.5rem; } .lb-next { right: 0.5rem; }
+    }
+
     /* ── TEAM ── */
     .team-grid {
       display: grid;
@@ -597,7 +652,7 @@
             <div class="edition-stat"><div class="edition-stat-n">IT</div><div class="edition-stat-l">Nazioni</div></div>
           </div>
           <p class="edition-quote">La prima volta che il bluegrass ha avuto un posto tutto suo in Italia.</p>
-          <a href="#" class="edition-link">Foto e video</a>
+          <div class="edition-gallery" data-year="2025"></div>
         </div>
       </article>
       <article class="edition-card">
@@ -611,7 +666,7 @@
             <div class="edition-stat"><div class="edition-stat-n">2</div><div class="edition-stat-l">Nazioni</div></div>
           </div>
           <p class="edition-quote">Un rifugio straordinario, musicisti da tutta Italia, un'atmosfera che non dimenticheremo.</p>
-          <a href="#" class="edition-link">Foto e video</a>
+          <div class="edition-gallery" data-year="2026"></div>
         </div>
       </article>
     </div>
@@ -736,6 +791,104 @@
           closeMenu();
         }
       }, false);
+    })();
+  </script>
+
+  <!-- Visualizzatore foto a schermo intero (creato una volta sola) -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Chiudi">&times;</button>
+    <button class="lb-prev" aria-label="Precedente">&#8249;</button>
+    <img src="" alt="">
+    <button class="lb-next" aria-label="Successiva">&#8250;</button>
+  </div>
+
+  <script>
+    /* =========================================================
+       GALLERIA FOTO EDIZIONI
+       Per aggiungere foto:
+       1) carica i file in  img/2025/  oppure  img/2026/
+       2) scrivi qui sotto il nome ESATTO di ogni file
+          (minuscolo, senza spazi, es: 2025-01.jpg)
+       Le foto appaiono nell'ordine in cui le scrivi.
+       (opzionale) album: link a Google Foto per la raccolta completa
+       ========================================================= */
+    var EDITIONS = {
+      "2025": {
+        foto: [
+          // "2025-01.jpg",
+          // "2025-02.jpg",
+          // "2025-03.jpg"
+        ],
+        album: ""   // es: "https://photos.app.goo.gl/..."  (lascia "" per nasconderlo)
+      },
+      "2026": {
+        foto: [
+          // "2026-01.jpg",
+          // "2026-02.jpg"
+        ],
+        album: ""
+      }
+    };
+
+    (function() {
+      var lb = document.getElementById('lightbox');
+      var lbImg = lb.querySelector('img');
+      var current = [];   // lista url della galleria aperta
+      var idx = 0;
+
+      function openLightbox(list, i) {
+        current = list; idx = i;
+        lbImg.src = current[idx];
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+      }
+      function closeLightbox() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+      }
+      function step(d) {
+        if (!current.length) return;
+        idx = (idx + d + current.length) % current.length;
+        lbImg.src = current[idx];
+      }
+
+      lb.querySelector('.lb-close').addEventListener('click', closeLightbox);
+      lb.querySelector('.lb-prev').addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
+      lb.querySelector('.lb-next').addEventListener('click', function(e){ e.stopPropagation(); step(1); });
+      lb.addEventListener('click', function(e){ if (e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', function(e){
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+      });
+
+      document.querySelectorAll('.edition-gallery').forEach(function(box) {
+        var year = box.getAttribute('data-year');
+        var data = EDITIONS[year] || { foto: [], album: "" };
+        var urls = data.foto.map(function(name){ return 'img/' + year + '/' + name; });
+
+        if (!urls.length) {
+          box.innerHTML = '<div class="gallery-empty">Le foto di questa edizione saranno caricate presto.</div>';
+        } else {
+          urls.forEach(function(url, i) {
+            var im = document.createElement('img');
+            im.src = url;
+            im.alt = 'Italian Bluegrass Campout ' + year + ' — foto ' + (i + 1);
+            im.loading = 'lazy';
+            im.addEventListener('click', function(){ openLightbox(urls, i); });
+            box.appendChild(im);
+          });
+        }
+        if (data.album) {
+          var a = document.createElement('a');
+          a.href = data.album; a.target = '_blank'; a.rel = 'noopener';
+          a.className = 'edition-album';
+          a.textContent = 'Tutte le foto';
+          box.parentNode.appendChild(a);
+        }
+      });
     })();
   </script>
 </body>
