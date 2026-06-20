@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italian Bluegrass Campout</title>
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta name="description" content="Italy's bluegrass gathering. Music, community, and nature — every year at a refuge in the woods.">
+  <link rel="alternate" hreflang="it" href="https://italianbluegrasscampout.it/">
+  <link rel="alternate" hreflang="en" href="https://italianbluegrasscampout.it/en/">
+  <link rel="alternate" hreflang="x-default" href="https://italianbluegrasscampout.it/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Italian Bluegrass Campout">
+  <meta property="og:description" content="Italy's bluegrass gathering. Music, community, and nature — every year at a refuge in the woods.">
+  <meta property="og:image" content="https://italianbluegrasscampout.it/copertina.jpg">
+  <meta property="og:url" content="https://italianbluegrasscampout.it/en/">
+  <meta property="og:locale" content="en_US">
+  <!-- Font self-hosted: nessuna chiamata a Google (vedi @font-face nel CSS) -->
+  <style>
+    /* ── FONT SELF-HOSTED — nessuna chiamata a Google ── */
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/playfair-700.woff2') format('woff2'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('../fonts/playfair-900.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/inter-400.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('../fonts/inter-500.woff2') format('woff2'); }
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/inter-600.woff2') format('woff2'); }
+
+    :root {
+      --paglia:     #F5F0D8;
+      --paglia-dk:  #EAE3BC;
+      --marrone:    #3B2010;
+      --marrone-lt: #6B4020;
+      --arancio:    #C45B1A;
+      --verde:      #3B6B1A;
+      --border:     rgba(59,32,16,0.15);
+      --border-md:  rgba(59,32,16,0.25);
+      --ff-d: 'Playfair Display', Georgia, serif;
+      --ff-b: 'Inter', system-ui, sans-serif;
+      --max: 1100px;
+      --px: 1.25rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { background: var(--paglia); color: var(--marrone); font-family: var(--ff-b); font-size: 16px; line-height: 1.7; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--paglia);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; align-items: center;
+      padding: 0 var(--px); height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--ff-d); font-size: 15px; font-weight: 700;
+      color: var(--marrone); white-space: nowrap; flex: 1;
+    }
+    .nav-logo span { color: var(--arancio); }
+
+    .nav-links {
+      display: flex; gap: 1.5rem;
+      list-style: none; align-items: center;
+    }
+    .nav-links a {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--marrone-lt);
+    }
+    .nav-links a:hover { color: var(--arancio); }
+    .nav-cta {
+      background: var(--marrone) !important; color: var(--paglia) !important;
+      padding: 7px 14px; border-radius: 3px;
+    }
+    .nav-cta:hover { background: var(--arancio) !important; }
+    .nav-lang {
+      border: 1px solid var(--border-md); border-radius: 3px;
+      padding: 5px 10px !important; font-size: 10px !important;
+    }
+    .nav-lang:hover { border-color: var(--arancio); color: var(--arancio) !important; }
+
+    /* hamburger */
+    .nav-burger {
+      display: block;
+      background: none; border: none; cursor: pointer;
+      padding: 10px 8px; color: var(--marrone);
+      -webkit-appearance: none; appearance: none;
+      visibility: hidden; pointer-events: none;
+      width: 40px; height: 44px;
+      position: relative;
+    }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--marrone); border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+      position: absolute; left: 9px;
+    }
+    .nav-burger span:nth-child(1) { top: 13px; }
+    .nav-burger span:nth-child(2) { top: 21px; }
+    .nav-burger span:nth-child(3) { top: 29px; }
+    .nav-burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* mobile menu */
+    .nav-mobile {
+      display: flex;
+      flex-direction: column;
+      background: var(--paglia);
+      border-top: 1px solid var(--border);
+      padding: 0 var(--px);
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .nav-mobile.open {
+      max-height: 400px;
+      padding: 1rem var(--px) 1.5rem;
+    }
+    .nav-mobile a {
+      display: block; padding: 13px 0;
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--marrone-lt);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-mobile a:last-child { border-bottom: none; }
+    .nav-mobile a.cta {
+      margin-top: 1rem; text-align: center;
+      background: var(--marrone); color: var(--paglia);
+      border-radius: 3px; padding: 13px;
+      border-bottom: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--paglia);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: clamp(2.5rem, 7vw, 5rem) var(--px) 0;
+      width: 100%; max-width: 680px;
+    }
+
+    .hero-logo-img {
+      width: clamp(220px, 48vw, 400px);
+      height: auto;
+      margin: 0 auto 1rem;
+      display: block;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--verde); margin-bottom: 0.6rem;
+    }
+    .hero-sub {
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      color: var(--marrone-lt);
+      margin: 0 auto 1.75rem;
+      max-width: 400px; line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex; gap: 0.75rem;
+      justify-content: center; flex-wrap: wrap;
+      padding-bottom: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .hero-landscape {
+      width: 100%;
+      line-height: 0;
+      flex-shrink: 0;
+    }
+    .hero-landscape svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── ANIMAZIONE ALBERI: crescono dal terreno ── */
+    @keyframes sprout {
+      0%   { transform: scaleY(0); opacity: 0; }
+      60%  { opacity: 1; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+    .hero-landscape .tree {
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+      animation: sprout 0.55s cubic-bezier(.34, 1.18, .64, 1) backwards;
+      animation-delay: var(--d, 0s);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-landscape .tree { animation: none; }
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block; font-family: var(--ff-b);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      padding: 13px 24px; border-radius: 3px;
+      border: 1.5px solid transparent; cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .btn-primary { background: var(--marrone); color: var(--paglia); border-color: var(--marrone); }
+    .btn-primary:hover { background: var(--arancio); border-color: var(--arancio); }
+    .btn-ghost { background: transparent; color: var(--marrone); border-color: var(--border-md); }
+    .btn-ghost:hover { border-color: var(--marrone); }
+    .btn-full { width: 100%; justify-content: center; }
+
+    /* ── STATS ── */
+    .stats { background: var(--marrone); padding: 2.5rem var(--px); }
+    .stats-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 1rem; text-align: center;
+    }
+    .stat-n {
+      font-family: var(--ff-d); font-size: 2.8rem; font-weight: 900;
+      color: var(--arancio); line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(245,240,216,0.55); margin-top: 5px;
+    }
+
+    /* ── SEZIONI BASE ── */
+    .section { padding: 3.5rem var(--px); max-width: var(--max); margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--arancio); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--ff-d);
+      font-size: clamp(1.7rem, 6vw, 2.6rem);
+      font-weight: 700; line-height: 1.1; margin-bottom: 1rem;
+    }
+    .section-body { color: var(--marrone-lt); font-size: 1rem; line-height: 1.75; }
+
+    /* ── CAMPOUT 2027 ── */
+    .campout-next {
+      background: var(--paglia-dk);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3.5rem var(--px);
+    }
+    .campout-next-inner { max-width: var(--max); margin: 0 auto; }
+    .campout-badge {
+      display: inline-block; background: var(--arancio); color: var(--paglia);
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 5px 12px; border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+    .campout-year {
+      font-family: var(--ff-d);
+      font-size: clamp(3.5rem, 18vw, 7rem);
+      font-weight: 900; line-height: 0.9;
+      color: var(--marrone); margin-bottom: 1rem;
+    }
+    .campout-info-list { list-style: none; margin: 1.25rem 0 1.75rem; }
+    .campout-info-list li {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 9px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.9rem; color: var(--marrone-lt);
+      flex-wrap: wrap;
+    }
+    .campout-info-list li:last-child { border-bottom: none; }
+    .info-key {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--verde);
+      min-width: 72px; flex-shrink: 0;
+    }
+    .form-box {
+      background: var(--paglia); border: 1px solid var(--border-md);
+      border-radius: 6px; padding: 1.5rem; margin-top: 2rem;
+    }
+    .form-box h3 { font-family: var(--ff-d); font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .form-box p { font-size: 0.88rem; color: var(--marrone-lt); margin-bottom: 1.25rem; line-height: 1.55; }
+    .form-embed-placeholder {
+      background: var(--paglia-dk); border: 1.5px dashed var(--border-md);
+      border-radius: 4px; padding: 2rem 1.25rem;
+      text-align: center; font-size: 0.85rem; color: var(--marrone-lt);
+    }
+    .form-embed-placeholder code {
+      display: block; font-size: 0.75rem; margin-top: 0.5rem;
+      opacity: 0.55; font-family: monospace; word-break: break-all;
+    }
+
+    /* ── EDIZIONI PASSATE ── */
+    .editions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem; margin-top: 2rem;
+    }
+    .edition-card {
+      border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+    }
+    .edition-card-header { background: var(--marrone); color: var(--paglia); padding: 1.1rem 1.25rem; }
+    .edition-year {
+      font-family: var(--ff-d); font-size: 2.2rem; font-weight: 900;
+      color: var(--arancio); line-height: 1;
+    }
+    .edition-meta { font-size: 0.78rem; opacity: 0.65; margin-top: 3px; }
+    .edition-card-body { padding: 1.1rem 1.25rem; background: var(--paglia-dk); }
+    .edition-stats { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+    .edition-stat { text-align: center; }
+    .edition-stat-n { font-family: var(--ff-d); font-size: 1.5rem; font-weight: 700; }
+    .edition-stat-l { font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--marrone-lt); }
+    .edition-quote {
+      font-size: 0.88rem; color: var(--marrone-lt); font-style: italic;
+      border-left: 2px solid var(--arancio); padding-left: 12px;
+      margin: 0.75rem 0; line-height: 1.5;
+    }
+    .edition-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--verde); margin-top: 0.6rem;
+      min-height: 44px;
+    }
+    .edition-link::after { content: '→'; }
+
+    /* ── GALLERIA EDIZIONI ── */
+    .edition-gallery {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 6px; margin-top: 0.85rem;
+    }
+    .edition-gallery img {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      border-radius: 4px; cursor: pointer; display: block;
+      border: 1px solid var(--border);
+      transition: transform 0.15s, filter 0.15s;
+    }
+    .edition-gallery img:hover { transform: scale(1.04); filter: brightness(1.05); }
+    .edition-gallery .gallery-empty {
+      grid-column: 1 / -1;
+      font-size: 0.8rem; font-style: italic; color: var(--marrone-lt);
+      padding: 0.4rem 0;
+    }
+    .edition-album {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--verde);
+      margin-top: 0.7rem; min-height: 36px;
+    }
+    .edition-album::after { content: '→'; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(30, 16, 8, 0.93);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+      padding: 1.5rem;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img {
+      max-width: 92vw; max-height: 84vh;
+      border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .lightbox button {
+      position: absolute; background: rgba(245,240,216,0.12);
+      color: var(--paglia); border: none; cursor: pointer;
+      width: 48px; height: 48px; border-radius: 50%;
+      font-size: 1.5rem; line-height: 1; display: flex;
+      align-items: center; justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.15s;
+    }
+    .lightbox button:hover { background: rgba(245,240,216,0.25); }
+    .lb-close { top: 1rem; right: 1rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+    @media (max-width: 600px) {
+      .lb-prev { left: 0.5rem; } .lb-next { right: 0.5rem; }
+    }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem; margin-top: 2rem;
+    }
+    .team-card {
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 1rem; background: var(--paglia-dk);
+    }
+    .team-initial {
+      position: relative; overflow: hidden;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--marrone); color: var(--paglia);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-d); font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 0.65rem; flex-shrink: 0;
+    }
+    .team-initial img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .team-name { font-weight: 600; font-size: 0.88rem; }
+    .team-role { font-size: 0.78rem; color: var(--arancio); font-weight: 500; margin: 2px 0 3px; }
+    .team-detail { font-size: 0.75rem; color: var(--marrone-lt); }
+
+    /* ── CONTATTI ── */
+    .contacts {
+      background: var(--paglia-dk);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem var(--px);
+    }
+    .contacts-inner { max-width: var(--max); margin: 0 auto; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .contact-card {
+      background: var(--paglia); border: 1px solid var(--border-md);
+      border-radius: 6px; padding: 1.25rem;
+    }
+    .contact-card-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--verde); margin-bottom: 0.4rem;
+    }
+    .contact-card h3 { font-family: var(--ff-d); font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .contact-card p { font-size: 0.88rem; color: var(--marrone-lt); margin-bottom: 0.9rem; line-height: 1.5; }
+    .contact-email {
+      display: inline-block; font-size: 0.82rem; font-weight: 500;
+      color: var(--arancio); word-break: break-all;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--marrone); padding: 2rem var(--px); }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .footer-top {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .footer-logo { font-family: var(--ff-d); font-size: 1rem; font-weight: 700; color: var(--paglia); }
+    .footer-logo span { color: var(--arancio); }
+    .footer-social { display: flex; gap: 1.25rem; }
+    .footer-social a {
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(245,240,216,0.5); min-height: 44px;
+      display: inline-flex; align-items: center;
+    }
+    .footer-social a:hover { color: var(--arancio); }
+    .footer-nav {
+      display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none;
+    }
+    .footer-nav a {
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(245,240,216,0.4);
+      min-height: 44px; display: inline-flex; align-items: center;
+    }
+    .footer-nav a:hover { color: var(--paglia); }
+    .footer-copy {
+      font-size: 11px; color: rgba(245,240,216,0.28);
+      border-top: 1px solid rgba(245,240,216,0.1); padding-top: 1rem;
+    }
+
+    .divider { max-width: var(--max); margin: 0 auto; padding: 0 var(--px); }
+    .divider hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── TABLET 600px+ ── */
+    @media (min-width: 600px) {
+      :root { --px: 2rem; }
+      .stats-inner { grid-template-columns: repeat(4, 1fr); }
+      .editions-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+      .hero-actions .btn { width: auto; }
+    }
+
+    /* ── DESKTOP 860px+ ── */
+    @media (min-width: 860px) {
+      :root { --px: 3rem; }
+      .nav-burger { visibility: hidden !important; pointer-events: none !important; }
+      .nav-links { display: flex !important; }
+      .nav-mobile { display: none !important; }
+      .section { padding: 5rem var(--px); }
+      .campout-next { padding: 5rem var(--px); }
+      .contacts { padding: 5rem var(--px); }
+      .campout-next-inner {
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 4rem; align-items: start;
+      }
+      .form-box { margin-top: 0; }
+      .contact-grid { grid-template-columns: repeat(3, 1fr); }
+      .team-grid { grid-template-columns: repeat(5, 1fr); }
+      .footer-inner { flex-direction: row; align-items: center; flex-wrap: wrap; }
+      .footer-top { width: 100%; }
+      .footer-nav { margin: 0; }
+      .footer-copy { width: 100%; }
+    }
+
+    /* ── MOBILE: bottoni hero full width ── */
+    @media (max-width: 420px) {
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+    }
+
+    /* ── MOBILE: mostra hamburger ── */
+    @media (max-width: 859px) {
+      .nav-burger { visibility: visible; pointer-events: auto; }
+      .nav-links { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
+  <!-- Brevo: stili form -->
+  <style>
+    :where(.sib-form-message-panel) { display: none; }
+    :where(.sib-form-message-panel .sib-notification__icon) { width: 20px; height: 20px; }
+  </style>
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+  <!-- Override per armonizzare il form Brevo col sito -->
+  <style>
+    .form-box .sib-form { background: transparent !important; padding: 0 !important; }
+    .form-box .sib-form-container, .form-box #sib-form-container { width: 100% !important; }
+    .form-box #sib-container {
+      background: transparent !important; border: none !important;
+      max-width: 100% !important; padding: 0 !important;
+    }
+    .form-box #sib-form { padding: 0 !important; }
+    .form-box .sib-form-message-panel { font-family: var(--ff-b) !important; max-width: 100% !important; }
+    .form-box .entry__label {
+      font-family: var(--ff-b) !important; color: var(--marrone) !important;
+      font-size: 0.8rem !important; font-weight: 600 !important;
+      letter-spacing: 0.04em !important; margin-bottom: 5px !important;
+    }
+    .form-box .input, .form-box input.input {
+      font-family: var(--ff-b) !important; font-size: 0.95rem !important;
+      color: var(--marrone) !important; background: #ffffff !important;
+      border: 1px solid var(--border-md) !important; border-radius: 4px !important;
+      padding: 11px 12px !important; box-shadow: none !important; width: 100% !important;
+    }
+    .form-box .input:focus { border-color: var(--arancio) !important; outline: none !important; }
+    .form-box .entry__specification { font-family: var(--ff-b) !important; color: var(--marrone-lt) !important; }
+    .form-box .sib-text-form-block p,
+    .form-box .entry__choice span,
+    .form-box .entry__choice span p { font-family: var(--ff-b) !important; color: var(--marrone-lt) !important; }
+    .form-box .entry__choice a { color: var(--arancio) !important; font-weight: 500 !important; }
+    .form-box .sib-form-block__button {
+      font-family: var(--ff-b) !important; background-color: var(--marrone) !important;
+      color: var(--paglia) !important; border-radius: 3px !important;
+      text-transform: uppercase !important; letter-spacing: 0.09em !important;
+      font-size: 12px !important; font-weight: 600 !important; padding: 13px 28px !important;
+      transition: background-color 0.18s !important;
+    }
+    .form-box .sib-form-block__button:hover { background-color: var(--arancio) !important; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">Italian <span>Bluegrass</span> Campout</span>
+      <ul class="nav-links">
+        <li><a href="#campout">Campout</a></li>
+        <li><a href="#edizioni">Editions</a></li>
+        <li><a href="#chi-siamo">About</a></li>
+        <li><a href="#contatti">Contact</a></li>
+        <li><a href="#campout" class="nav-cta">Join 2027</a></li>
+        <li><a href="../" class="nav-lang">IT</a></li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="mobile-menu" aria-label="Mobile menu">
+      <a href="#campout" class="mobile-link">Campout 2027</a>
+      <a href="#edizioni" class="mobile-link">Editions</a>
+      <a href="#chi-siamo" class="mobile-link">About</a>
+      <a href="#contatti" class="mobile-link">Contact</a>
+      <a href="../" class="mobile-link">Versione italiana</a>
+      <a href="#campout" class="cta">Sign up for Campout 2027</a>
+    </nav>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+
+    <div class="hero-content">
+      <img class="hero-logo-img" src="../logo.png" alt="Italian Bluegrass Campout">
+      <p class="hero-eyebrow">Since 2025 · Italy</p>
+      <p class="hero-sub">Italy's bluegrass gathering: a community of musicians and music lovers who come together to play in open jams, at a refuge in the woods.</p>
+      <div class="hero-actions">
+        <a href="#campout" class="btn btn-primary">Campout 2027 — sign up</a>
+        <a href="#edizioni" class="btn btn-ghost">Past editions</a>
+      </div>
+    </div>
+
+    <div class="hero-landscape">
+      <svg viewBox="0 -55 1440 315" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+
+        <!-- Collina principale verde -->
+        <ellipse cx="720" cy="370" rx="860" ry="220" fill="#3B6B1A"/>
+        <!-- Colline laterali più scure -->
+        <ellipse cx="80"   cy="340" rx="360" ry="150" fill="#2d5a14"/>
+        <ellipse cx="1360" cy="340" rx="360" ry="150" fill="#2d5a14"/>
+        <!-- Prato primo piano -->
+        <path d="M0 224 Q360 206 720 214 Q1080 206 1440 222 L1440 260 L0 260Z" fill="#4a7a20"/>
+        <path d="M0 242 Q360 230 720 236 Q1080 230 1440 240 L1440 260 L0 260Z" fill="#5c8a30"/>
+
+        <!-- ALBERI SFONDO — piccoli, scuri, lontani -->
+        <g class="tree" style="--d:0s"><rect x="62"  y="172" width="7" height="72" fill="#1a3508"/><ellipse cx="65"  cy="162" rx="18" ry="23" fill="#1a3508"/></g>
+        <g class="tree" style="--d:.04s"><rect x="112" y="162" width="7" height="80" fill="#1e3d0a"/><ellipse cx="115" cy="151" rx="20" ry="25" fill="#1e3d0a"/></g>
+        <g class="tree" style="--d:.08s"><rect x="168" y="156" width="8" height="84" fill="#1e3d0a"/><ellipse cx="172" cy="144" rx="22" ry="27" fill="#2d5a14"/></g>
+        <g class="tree" style="--d:.12s"><rect x="1268" y="168" width="7" height="76" fill="#1a3508"/><ellipse cx="1271" cy="157" rx="18" ry="23" fill="#1a3508"/></g>
+        <g class="tree" style="--d:.16s"><rect x="1318" y="160" width="7" height="82" fill="#1e3d0a"/><ellipse cx="1321" cy="148" rx="20" ry="25" fill="#1e3d0a"/></g>
+        <g class="tree" style="--d:.2s"><rect x="1370" y="166" width="8" height="76" fill="#1e3d0a"/><ellipse cx="1374" cy="155" rx="18" ry="22" fill="#2d5a14"/></g>
+
+        <!-- ALBERI PRIMO PIANO — più grandi e colorati -->
+        <g class="tree" style="--d:.24s"><rect x="222" y="114" width="12" height="136" fill="#1e3d0a"/><ellipse cx="228" cy="100" rx="32" ry="41" fill="#1e3d0a"/></g>
+        <g class="tree" style="--d:.29s"><rect x="288" y="102" width="13" height="142" fill="#2d5a14"/><ellipse cx="294" cy="86"  rx="35" ry="45" fill="#C45B1A"/></g>
+        <g class="tree" style="--d:.34s"><rect x="360" y="88"  width="14" height="152" fill="#1e3d0a"/><ellipse cx="367" cy="70"  rx="38" ry="50" fill="#2d5a14"/></g>
+        <g class="tree" style="--d:.39s"><rect x="438" y="76"  width="15" height="160" fill="#2d5a14"/><ellipse cx="445" cy="56"  rx="42" ry="54" fill="#3B6B1A"/></g>
+        <g class="tree" style="--d:.44s"><rect x="524" y="62"  width="16" height="172" fill="#1e3d0a"/><ellipse cx="532" cy="40"  rx="46" ry="58" fill="#D94F1A"/></g>
+        <g class="tree" style="--d:.49s"><rect x="622" y="50"  width="18" height="180" fill="#2d5a14"/><ellipse cx="631" cy="26"  rx="52" ry="64" fill="#3B6B1A"/></g>
+        <g class="tree" style="--d:.54s"><rect x="726" y="54"  width="17" height="176" fill="#1e3d0a"/><ellipse cx="734" cy="30"  rx="50" ry="62" fill="#8B3A1A"/></g>
+        <g class="tree" style="--d:.59s"><rect x="826" y="60"  width="16" height="170" fill="#2d5a14"/><ellipse cx="834" cy="38"  rx="48" ry="60" fill="#C45B1A"/></g>
+        <g class="tree" style="--d:.64s"><rect x="922" y="76"  width="15" height="158" fill="#1e3d0a"/><ellipse cx="929" cy="56"  rx="42" ry="54" fill="#2d5a14"/></g>
+        <g class="tree" style="--d:.69s"><rect x="1000" y="90" width="14" height="146" fill="#2d5a14"/><ellipse cx="1007" cy="72" rx="38" ry="50" fill="#D94F1A"/></g>
+        <g class="tree" style="--d:.74s"><rect x="1074" y="102" width="13" height="136" fill="#1e3d0a"/><ellipse cx="1080" cy="85" rx="35" ry="45" fill="#3B6B1A"/></g>
+        <g class="tree" style="--d:.79s"><rect x="1146" y="112" width="12" height="128" fill="#2d5a14"/><ellipse cx="1152" cy="97" rx="32" ry="41" fill="#1e3d0a"/></g>
+
+        <!-- Arbusti primo piano -->
+        <g class="tree" style="--d:.84s"><ellipse cx="185"  cy="234" rx="28" ry="13" fill="#3d6b18"/></g>
+        <g class="tree" style="--d:.88s"><ellipse cx="440"  cy="238" rx="23" ry="11" fill="#2d5a14"/></g>
+        <g class="tree" style="--d:.92s"><ellipse cx="695"  cy="236" rx="30" ry="13" fill="#3d6b18"/></g>
+        <g class="tree" style="--d:.96s"><ellipse cx="915"  cy="239" rx="25" ry="11" fill="#2d5a14"/></g>
+        <g class="tree" style="--d:1s"><ellipse cx="1175" cy="236" rx="27" ry="12" fill="#3d6b18"/></g>
+        <g class="tree" style="--d:1.04s"><ellipse cx="1395" cy="238" rx="21" ry="11" fill="#2d5a14"/></g>
+
+        <!-- Sentiero -->
+        <path d="M698 228 Q710 216 720 212 Q730 216 742 228" stroke="#EAE3BC" stroke-width="4" fill="none" opacity="0.4" stroke-linecap="round"/>
+
+        <!-- Fili d'erba -->
+        <line x1="320" y1="250" x2="320" y2="240" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="326" y1="248" x2="330" y2="238" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="570" y1="251" x2="570" y2="241" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="576" y1="249" x2="580" y2="239" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="850" y1="250" x2="850" y2="240" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="856" y1="248" x2="860" y2="238" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="1090" y1="251" x2="1090" y2="241" stroke="#4a7a20" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+  </header>
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div><div class="stat-n">2</div><div class="stat-label">Editions</div></div>
+      <div><div class="stat-n">35+</div><div class="stat-label">Participants</div></div>
+      <div><div class="stat-n">5+</div><div class="stat-label">Regions</div></div>
+      <div><div class="stat-n">2027</div><div class="stat-label">Next edition</div></div>
+    </div>
+  </div>
+
+  <!-- CAMPOUT 2027 -->
+  <section id="campout" class="campout-next">
+    <div class="campout-next-inner">
+      <div>
+        <span class="campout-badge">Next edition</span>
+        <div class="campout-year">2027</div>
+        <p class="section-body">The third edition is in the works: save the date, <strong>June 12–13, 2027</strong> (tentative, to be confirmed). Sign up to get the official confirmation and all the updates.</p>
+        <ul class="campout-info-list">
+          <li><span class="info-key">Date</span>June 12–13, 2027 — save the date! <span style="opacity:.7">⚠️ to be confirmed</span></li>
+          <li><span class="info-key">Location</span>Tuscan-Emilian Apennines, to be confirmed</li>
+          <li><span class="info-key">Format</span>Weekend of open jams, concerts, and open mic</li>
+          <li><span class="info-key">Level</span>Open to all levels, slow jams included</li>
+        </ul>
+        <a href="https://instagram.com/italianbluegrasscampout" class="btn btn-ghost" target="_blank" rel="noopener">Follow us on Instagram</a>
+      </div>
+      <div class="form-box">
+        <h3>Keep me posted</h3>
+        <p>Fill out the form to get updates on the next edition. As soon as the date is confirmed, you'll be the first to know.</p>
+        <!-- Brevo Form -->
+        <div class="sib-form" style="text-align:center;">
+          <div id="sib-form-container" class="sib-form-container">
+            <div id="error-message" class="sib-form-message-panel" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px; max-width:540px;">
+              <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/></svg>
+                <span class="sib-form-message-panel__inner-text">Your subscription could not be validated.</span>
+              </div>
+            </div>
+            <div></div>
+            <div id="success-message" class="sib-form-message-panel" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#085229; background-color:#e7faf0; border-color:#13ce66; border-radius:3px; max-width:540px;">
+              <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"><path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/></svg>
+                <span class="sib-form-message-panel__inner-text">Your subscription has been confirmed.</span>
+              </div>
+            </div>
+            <div></div>
+            <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); border-width:1px; border-style:solid; border-color:#C0CCD9; border-radius:3px; direction:ltr">
+              <form id="sib-form" method="POST" action="https://c3de0308.sibforms.com/serve/MUIFAL8yyXYKs7wGO1rjiwfT3V_xSE0IvbymF15CTtijIk6IoCCKZ3JRTftoeITiZx-yTy0juYeUjrYC_m_BuHI1E-rNqE1VfcKMH3DEm-bMfWSbFCnbbDcEfYxTICKHYCqHBodNCtnmwjFxjypreSZYZrVznzPmxqtKzsCTRLFNkceT4u2gMAt9MPBTYU74lHxQK7hOI1JeT2S80Q==" data-type="subscription">
+
+                <div style="padding: 8px 0;">
+                  <div class="sib-input sib-form-block">
+                    <div class="form__entry entry_block">
+                      <div class="form__label-row">
+                        <label class="entry__label" for="EMAIL" data-required="*">Email</label>
+                        <div class="entry__field">
+                          <input class="input" type="text" id="EMAIL" name="EMAIL" autocomplete="off" value="" placeholder="your-email@example.com" data-required="true" required />
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding: 8px 0;">
+                  <div class="sib-input sib-form-block">
+                    <div class="form__entry entry_block">
+                      <div class="form__label-row">
+                        <label class="entry__label" for="NOME" data-required="*">First name</label>
+                        <div class="entry__field">
+                          <input class="input" maxlength="200" type="text" id="NOME" name="NOME" autocomplete="off" placeholder="First name" data-required="true" required />
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding: 8px 0;">
+                  <div class="sib-input sib-form-block">
+                    <div class="form__entry entry_block">
+                      <div class="form__label-row">
+                        <label class="entry__label" for="COGNOME" data-required="*">Last name</label>
+                        <div class="entry__field">
+                          <input class="input" maxlength="200" type="text" id="COGNOME" name="COGNOME" autocomplete="off" placeholder="Last name" data-required="true" required />
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding: 8px 0;">
+                  <div class="sib-optin sib-form-block" data-required="true">
+                    <div class="form__entry entry_mcq">
+                      <div class="form__label-row">
+                        <div class="entry__choice">
+                          <label>
+                            <input type="checkbox" class="input_replaced" value="1" id="CONSENSO_NEWSLETTER" name="CONSENSO_NEWSLETTER" required />
+                            <span class="checkbox checkbox_tick_positive" style="margin-left:"></span>
+                            <span><p>I agree to receive updates from Italian Bluegrass Campout and accept the <a href="privacy.html">Privacy Policy</a>.</p></span>
+                          </label>
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-family:Helvetica,sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
+                      <label class="entry__specification">You can unsubscribe at any time using the link at the bottom of every email.</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="padding: 8px 0;">
+                  <div class="sib-form-block" style="text-align:center">
+                    <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                      <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+                      Subscribe
+                    </button>
+                  </div>
+                </div>
+
+                <input type="text" name="email_address_check" value="" class="input--hidden">
+                <input type="hidden" name="locale" value="en">
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- /Brevo Form -->
+        <p style="font-size:0.78rem; color:var(--marrone-lt); margin: 0.9rem 0 0; line-height:1.5;">By signing up you accept our <a href="privacy.html" style="color:var(--arancio); font-weight:500;">Privacy Policy</a>. You'll only get updates about the Campout — no spam.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDIZIONI PASSATE -->
+  <section id="edizioni" class="section">
+    <p class="section-eyebrow">Our story</p>
+    <h2 class="section-title">Past editions</h2>
+    <p class="section-body">Two years of music and jams around a circle of instruments — and above all, friendships made through playing together that last well beyond the weekend.</p>
+    <div class="editions-grid">
+      <article class="edition-card">
+        <div class="edition-card-header">
+          <div class="edition-year">2025</div>
+          <div class="edition-meta">First edition · Rifugio Il Poggiolo, Marzabotto (Bologna, Italy)</div>
+        </div>
+        <div class="edition-card-body">
+          <div class="edition-stats">
+            <div class="edition-stat"><div class="edition-stat-n">~20</div><div class="edition-stat-l">Participants</div></div>
+            <div class="edition-stat"><div class="edition-stat-n">IT</div><div class="edition-stat-l">Countries</div></div>
+          </div>
+          <p class="edition-quote">Our first Campout, almost an experiment. It went better than we hoped — proof that bluegrass has room to grow in Italy, and that we wanted to keep going.</p>
+          <div class="edition-gallery" data-year="2025"></div>
+        </div>
+      </article>
+      <article class="edition-card">
+        <div class="edition-card-header">
+          <div class="edition-year">2026</div>
+          <div class="edition-meta">Second edition · Acatù Rifugio, Monzuno (Bologna, Italy)</div>
+        </div>
+        <div class="edition-card-body">
+          <div class="edition-stats">
+            <div class="edition-stat"><div class="edition-stat-n">35+</div><div class="edition-stat-l">Participants</div></div>
+            <div class="edition-stat"><div class="edition-stat-n">2</div><div class="edition-stat-l">Countries</div></div>
+          </div>
+          <p class="edition-quote">Musicians from all over Italy, a welcoming refuge, jams late into the evening. The second edition confirmed we're heading in the right direction.</p>
+          <div class="edition-gallery" data-year="2026"></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="divider"><hr></div>
+
+  <!-- CHI SIAMO -->
+  <section id="chi-siamo" class="section">
+    <p class="section-eyebrow">The project</p>
+    <h2 class="section-title">About us</h2>
+    <p class="section-body">Italian Bluegrass Campout grew out of a love for bluegrass and the spirit that comes with it: jams as meeting places, where people play together, learn from each other, and grow — as musicians and as people. More than a string of concerts, it's a community: we aim for an open, inclusive atmosphere where someone who's played for decades and someone who just picked up an instrument find the same place in the circle. Beyond the annual Campout, we support regular jam sessions taking root in Tuscany, Emilia-Romagna, and across Italy.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-initial">AD<img src="../img/team/Alfonso.jpg" alt="Alfonso Dodero" onerror="this.remove()"></div>
+        <div class="team-name">Alfonso Dodero</div>
+        <div class="team-role">IT & Social media</div>
+        <div class="team-detail">Banjo · Coordination</div>
+      </div>
+      <div class="team-card">
+        <div class="team-initial">FC<img src="../img/team/Francesca.jpg" alt="Francesca Civoli" onerror="this.remove()"></div>
+        <div class="team-name">Francesca Civoli</div>
+        <div class="team-role">Venue & Logistics</div>
+        <div class="team-detail">Upright bass · Production</div>
+      </div>
+      <div class="team-card">
+        <div class="team-initial">SB<img src="../img/team/Sarah.jpg" alt="Sarah Bertasio" onerror="this.remove()"></div>
+        <div class="team-name">Sarah Bertasio</div>
+        <div class="team-role">Design & Communications</div>
+        <div class="team-detail">Guitar · Visual identity</div>
+      </div>
+      <div class="team-card">
+        <div class="team-initial">LM<img src="../img/team/Luca.jpg" alt="Luca Minzon" onerror="this.remove()"></div>
+        <div class="team-name">Luca Minzon</div>
+        <div class="team-role">Bands & Artists</div>
+        <div class="team-detail">Guitar · Music booking</div>
+      </div>
+      <div class="team-card">
+        <div class="team-initial">MS<img src="../img/team/Marco.jpg" alt="Marco Sganzerla" onerror="this.remove()"></div>
+        <div class="team-name">Marco Sganzerla</div>
+        <div class="team-role">Audio</div>
+        <div class="team-detail">Guitar · Sound engineer · Stage</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti" class="contacts">
+    <div class="contacts-inner">
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-card-label">Join us</div>
+          <h3>Want to come to the Campout?</h3>
+          <p>Sign up using the form in the 2027 section to get updates on the next edition.</p>
+          <a href="#campout" class="btn btn-primary btn-full">Go to sign-up</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Partner with us</div>
+          <h3>Partners & collaborations</h3>
+          <p>Are you an association, a band, or a music organization? Get in touch to explore possibilities.</p>
+          <a href="mailto:italianbluegrasscampout@gmail.com" class="contact-email">italianbluegrasscampout@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Press</div>
+          <h3>Media & press</h3>
+          <p>For interviews and press materials, email us at the same address with subject "Press".</p>
+          <a href="mailto:italianbluegrasscampout@gmail.com" class="contact-email">italianbluegrasscampout@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <span class="footer-logo">Italian <span>Bluegrass</span> Campout</span>
+        <div class="footer-social">
+          <a href="https://instagram.com/italianbluegrasscampout" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://facebook.com/italianbluegrasscampout" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <ul class="footer-nav">
+        <li><a href="#campout">2027</a></li>
+        <li><a href="#edizioni">Editions</a></li>
+        <li><a href="#chi-siamo">About</a></li>
+        <li><a href="#contatti">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+      <span class="footer-copy">© 2027 Italian Bluegrass Campout · italianbluegrasscampout@gmail.com</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var burger = document.getElementById('burger');
+      var menu = document.getElementById('mobile-menu');
+      if (!burger || !menu) return;
+
+      function closeMenu() {
+        menu.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+
+      burger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var isOpen = menu.classList.toggle('open');
+        burger.classList.toggle('open', isOpen);
+        burger.setAttribute('aria-expanded', String(isOpen));
+      }, false);
+
+      menu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', closeMenu, false);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!burger.contains(e.target) && !menu.contains(e.target)) {
+          closeMenu();
+        }
+      }, false);
+    })();
+  </script>
+
+  <!-- Visualizzatore foto a schermo intero (creato una volta sola) -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-prev" aria-label="Previous">&#8249;</button>
+    <img src="" alt="">
+    <button class="lb-next" aria-label="Next">&#8250;</button>
+  </div>
+
+  <script>
+    /* =========================================================
+       GALLERIA FOTO EDIZIONI
+       Per aggiungere foto:
+       1) carica i file in  img/2025/  oppure  img/2026/
+       2) scrivi qui sotto il nome ESATTO di ogni file
+          (minuscolo, senza spazi, es: 2025-01.jpg)
+       Le foto appaiono nell'ordine in cui le scrivi.
+       (opzionale) album: link a Google Foto per la raccolta completa
+       ========================================================= */
+    var EDITIONS = {
+      "2025": {
+        foto: [
+          "2025-01.jpg", "2025-02.jpg", "2025-03.jpg", "2025-04.jpg",
+          "2025-05.jpg", "2025-06.jpg", "2025-07.jpg", "2025-08.jpg"
+        ],
+        album: ""   // es: "https://photos.app.goo.gl/..."  (lascia "" per nasconderlo)
+      },
+      "2026": {
+        foto: [
+          "2026-01.jpg", "2026-02.jpg", "2026-03.jpg", "2026-04.jpg",
+          "2026-05.jpg", "2026-06.jpg", "2026-07.jpg", "2026-08.jpg"
+        ],
+        album: ""
+      }
+    };
+
+    (function() {
+      var lb = document.getElementById('lightbox');
+      var lbImg = lb.querySelector('img');
+      var current = [];   // lista url della galleria aperta
+      var idx = 0;
+
+      function openLightbox(list, i) {
+        current = list; idx = i;
+        lbImg.src = current[idx];
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+      }
+      function closeLightbox() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+      }
+      function step(d) {
+        if (!current.length) return;
+        idx = (idx + d + current.length) % current.length;
+        lbImg.src = current[idx];
+      }
+
+      lb.querySelector('.lb-close').addEventListener('click', closeLightbox);
+      lb.querySelector('.lb-prev').addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
+      lb.querySelector('.lb-next').addEventListener('click', function(e){ e.stopPropagation(); step(1); });
+      lb.addEventListener('click', function(e){ if (e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', function(e){
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+      });
+
+      document.querySelectorAll('.edition-gallery').forEach(function(box) {
+        var year = box.getAttribute('data-year');
+        var data = EDITIONS[year] || { foto: [], album: "" };
+        var urls = data.foto.map(function(name){ return '../img/' + year + '/' + name; });
+
+        if (!urls.length) {
+          box.innerHTML = '<div class="gallery-empty">Photos from this edition will be uploaded soon.</div>';
+        } else {
+          var pending = urls.length;
+          function settle() {
+            pending--;
+            if (pending <= 0 && !box.querySelector('img')) {
+              box.innerHTML = '<div class="gallery-empty">Photos from this edition will be uploaded soon.</div>';
+            }
+          }
+          urls.forEach(function(url, i) {
+            var im = document.createElement('img');
+            im.src = url;
+            im.alt = 'Italian Bluegrass Campout ' + year + ' — photo ' + (i + 1);
+            im.loading = 'lazy';
+            im.onload = settle;
+            im.onerror = function(){ im.remove(); settle(); };
+            im.addEventListener('click', function(){
+              var live = Array.prototype.map.call(box.querySelectorAll('img'), function(el){ return el.src; });
+              openLightbox(live, live.indexOf(im.src));
+            });
+            box.appendChild(im);
+          });
+        }
+        if (data.album) {
+          var a = document.createElement('a');
+          a.href = data.album; a.target = '_blank'; a.rel = 'noopener';
+          a.className = 'edition-album';
+          a.textContent = 'All photos';
+          box.parentNode.appendChild(a);
+        }
+      });
+    })();
+  </script>
+  <!-- Brevo: script form -->
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please select a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please check the field format and try again.";
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left empty. ";
+    window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please check the field format and try again.";
+    window.INVALID_NUMBER = "The information provided is invalid. Please check the field format and try again.";
+    window.INVALID_DATE = "Please enter a valid date";
+    window.REQUIRED_MULTISELECT_MESSAGE = 'Select at least 1 option';
+    window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+</body>
+</html>
