@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iscrizione confermata — Italian Bluegrass Campout</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paglia: #F5F0D8;
+      --marrone: #3B2010;
+      --marrone-lt: #6B4020;
+      --arancio: #C45B1A;
+      --verde: #3B6B1A;
+      --border: rgba(59,32,16,0.15);
+      --ff-d: 'Playfair Display', Georgia, serif;
+      --ff-b: 'Inter', system-ui, sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      background:var(--paglia); color:var(--marrone); font-family:var(--ff-b);
+      min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:24px; line-height:1.65;
+    }
+    .logo{width:90px; height:auto; margin-bottom:28px; display:block;}
+    .card{
+      background:#fff; border:1px solid var(--border); border-radius:10px;
+      max-width:480px; width:100%; padding:40px 32px; text-align:center;
+    }
+    .icon{ width:48px; height:48px; margin:0 auto 20px; color:var(--verde); }
+    .eyebrow{
+      font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--verde); margin-bottom:10px;
+    }
+    h1{ font-family:var(--ff-d); font-size:1.7rem; font-weight:700; margin-bottom:16px; }
+    p{ font-size:0.95rem; color:var(--marrone-lt); margin-bottom:6px; }
+    .divider{ border:none; border-top:1px solid var(--border); margin:24px 0; }
+    .lang-tag{
+      font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--arancio); margin-bottom:8px; display:block;
+    }
+    .btn{
+      display:inline-block; margin-top:28px; font-family:var(--ff-b);
+      font-size:12px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase;
+      padding:13px 26px; border-radius:3px; background:var(--marrone); color:var(--paglia);
+      text-decoration:none;
+    }
+    .btn:hover{ background:var(--arancio); }
+    .social{ margin-top:18px; font-size:12px; }
+    .social a{ color:var(--arancio); text-decoration:none; font-weight:600; }
+  </style>
+</head>
+<body>
+  <a href="/"><img class="logo" src="/logo.png" alt="Italian Bluegrass Campout"></a>
+  <div class="card">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <span class="lang-tag">IT</span>
+    <span class="eyebrow">Iscrizione confermata</span>
+    <h1>Sei dei nostri!</h1>
+    <p>Riceverai aggiornamenti sul Campout 2027, sulle jam session e su tutte le novità — senza spam, promesso.</p>
+
+    <hr class="divider">
+
+    <span class="lang-tag">EN</span>
+    <span class="eyebrow">Subscription confirmed</span>
+    <h1>You're in!</h1>
+    <p>You'll receive updates on Campout 2027, jam sessions and all the latest news — no spam, promised.</p>
+
+    <a class="btn" href="/">Visita il sito · Visit site</a>
+    <div class="social">
+      <a href="https://instagram.com/italianbluegrasscampout" target="_blank" rel="noopener">Instagram</a>
+      &nbsp;·&nbsp;
+      <a href="https://facebook.com/italianbluegrasscampout" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</body>
+</html>

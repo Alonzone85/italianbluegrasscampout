@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controlla la tua email — Italian Bluegrass Campout</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paglia: #F5F0D8;
+      --marrone: #3B2010;
+      --marrone-lt: #6B4020;
+      --arancio: #C45B1A;
+      --verde: #3B6B1A;
+      --border: rgba(59,32,16,0.15);
+      --ff-d: 'Playfair Display', Georgia, serif;
+      --ff-b: 'Inter', system-ui, sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      background:var(--paglia); color:var(--marrone); font-family:var(--ff-b);
+      min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:24px; line-height:1.65;
+    }
+    .logo{width:90px; height:auto; margin-bottom:28px; display:block;}
+    .card{
+      background:#fff; border:1px solid var(--border); border-radius:10px;
+      max-width:480px; width:100%; padding:40px 32px; text-align:center;
+    }
+    .icon{ width:48px; height:48px; margin:0 auto 20px; color:var(--verde); }
+    .eyebrow{
+      font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--verde); margin-bottom:10px;
+    }
+    h1{ font-family:var(--ff-d); font-size:1.7rem; font-weight:700; margin-bottom:16px; }
+    p{ font-size:0.95rem; color:var(--marrone-lt); margin-bottom:6px; }
+    .divider{ border:none; border-top:1px solid var(--border); margin:24px 0; }
+    .lang-tag{
+      font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--arancio); margin-bottom:8px; display:block;
+    }
+    a.back{
+      display:inline-block; margin-top:28px; font-size:12px; font-weight:600;
+      letter-spacing:0.06em; text-transform:uppercase; color:var(--marrone-lt);
+      text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:2px;
+    }
+    a.back:hover{ color:var(--arancio); border-color:var(--arancio); }
+  </style>
+</head>
+<body>
+  <a href="/"><img class="logo" src="/logo.png" alt="Italian Bluegrass Campout"></a>
+  <div class="card">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M3 8l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <span class="lang-tag">IT</span>
+    <span class="eyebrow">Quasi fatto</span>
+    <h1>Controlla la tua email</h1>
+    <p>Ti abbiamo appena inviato un link di conferma.</p>
+    <p>Clicca sul link nell'email per completare l'iscrizione alla newsletter.</p>
+
+    <hr class="divider">
+
+    <span class="lang-tag">EN</span>
+    <span class="eyebrow">Almost there</span>
+    <h1>Check your email</h1>
+    <p>We've just sent you a confirmation link.</p>
+    <p>Click the link in the email to complete your newsletter subscription.</p>
+
+    <a class="back" href="/">Torna al sito · Back to site</a>
+  </div>
+</body>
+</html>
