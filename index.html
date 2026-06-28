@@ -666,6 +666,7 @@
     </div>
 
   </header>
+
   <!-- STATS -->
   <div class="stats">
     <div class="stats-inner">
@@ -716,7 +717,6 @@
             <div></div>
             <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); border-width:1px; border-style:solid; border-color:#C0CCD9; border-radius:3px; direction:ltr">
               <form id="sib-form" method="POST" action="https://c3de0308.sibforms.com/serve/MUIFAL8yyXYKs7wGO1rjiwfT3V_xSE0IvbymF15CTtijIk6IoCCKZ3JRTftoeITiZx-yTy0juYeUjrYC_m_BuHI1E-rNqE1VfcKMH3DEm-bMfWSbFCnbbDcEfYxTICKHYCqHBodNCtnmwjFxjypreSZYZrVznzPmxqtKzsCTRLFNkceT4u2gMAt9MPBTYU74lHxQK7hOI1JeT2S80Q==" data-type="subscription">
-
                 <div style="padding: 8px 0;">
                   <div class="sib-input sib-form-block">
                     <div class="form__entry entry_block">
@@ -730,7 +730,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div style="padding: 8px 0;">
                   <div class="sib-input sib-form-block">
                     <div class="form__entry entry_block">
@@ -744,7 +743,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div style="padding: 8px 0;">
                   <div class="sib-input sib-form-block">
                     <div class="form__entry entry_block">
@@ -758,7 +756,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div style="padding: 8px 0;">
                   <div class="sib-optin sib-form-block" data-required="true">
                     <div class="form__entry entry_mcq">
@@ -776,7 +773,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div style="padding: 8px 0;">
                   <div class="sib-form-block" style="text-align:center">
                     <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
@@ -785,7 +781,6 @@
                     </button>
                   </div>
                 </div>
-
                 <input type="text" name="email_address_check" value="" class="input--hidden">
                 <input type="hidden" name="locale" value="it">
               </form>
@@ -966,22 +961,13 @@
   </div>
 
   <script>
-    /* =========================================================
-       GALLERIA FOTO EDIZIONI
-       Per aggiungere foto:
-       1) carica i file in  img/2025/  oppure  img/2026/
-       2) scrivi qui sotto il nome ESATTO di ogni file
-          (minuscolo, senza spazi, es: 2025-01.jpg)
-       Le foto appaiono nell'ordine in cui le scrivi.
-       (opzionale) album: link a Google Foto per la raccolta completa
-       ========================================================= */
     var EDITIONS = {
       "2025": {
         foto: [
           "2025-01.jpg", "2025-02.jpg", "2025-03.jpg", "2025-04.jpg",
           "2025-05.jpg", "2025-06.jpg", "2025-07.jpg", "2025-08.jpg"
         ],
-        album: ""   // es: "https://photos.app.goo.gl/..."  (lascia "" per nasconderlo)
+        album: ""
       },
       "2026": {
         foto: [
@@ -995,7 +981,7 @@
     (function() {
       var lb = document.getElementById('lightbox');
       var lbImg = lb.querySelector('img');
-      var current = [];   // lista url della galleria aperta
+      var current = [];
       var idx = 0;
 
       function openLightbox(list, i) {
@@ -1065,6 +1051,7 @@
       });
     })();
   </script>
+
   <!-- Brevo: script form -->
   <script>
     window.REQUIRED_CODE_ERROR_MESSAGE = 'Scegli un prefisso paese';
@@ -1079,5 +1066,10 @@
     var AUTOHIDE = Boolean(0);
   </script>
   <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f6a67f4864bd4d13891bc3d62daf9df2"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+
 </body>
 </html>
